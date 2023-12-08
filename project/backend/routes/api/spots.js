@@ -189,10 +189,6 @@ router.get('/', validateQuery, async (req, res) => {
                     where: {id: spotsData[i].id},
                     include: [
                         {
-                            model: Review,
-                            attributes: [],
-                        },
-                        {
                             model: SpotImage,
                             where: {
                                 preview: true
@@ -203,11 +199,27 @@ router.get('/', validateQuery, async (req, res) => {
                     ],
                     attributes: [
                             'id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt',
-                            [sequelize.fn('AVG', sequelize.col('reviews.stars')), 'avgRating']
                     ],
                     raw: true
                 })
 
+                const avgRatingValue = async () => {
+                    const reviews = await Review.findAll({
+                        where: {spotid: spot.id},
+                        attributes: ['stars'],
+                        raw: true
+                    })
+
+                    let counter = 0;
+
+                    reviews.map((reviewStars) => {
+                        counter += reviewStars.stars
+                    })
+
+                    return counter / reviews.length
+                }
+
+                const avgRating = await avgRatingValue()
 
                 const img = await SpotImage.findOne({
                     where: {spotId: spot.id,
@@ -229,7 +241,7 @@ router.get('/', validateQuery, async (req, res) => {
                     price: spot.price,
                     createdAt: spot.createdAt,
                     updatedAt: spot.updatedAt,
-                    avgRating: spot.avgRating,
+                    avgRating: avgRating,
                     previewImage: img.url,
                 }
                 console.log(1)
@@ -240,18 +252,29 @@ router.get('/', validateQuery, async (req, res) => {
 
                 const spot = await Spot.findOne({
                     where: {id: spotsData[i].id},
-                    include: [
-                        {
-                            model: Review,
-                            attributes: [],
-                        }
-                    ],
                     attributes: [
-                            'id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt',
-                            [sequelize.fn('AVG', sequelize.col('reviews.stars')), 'avgRating']
+                            'id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt'
                     ],
                     raw: true
                 })
+
+                const avgRatingValue = async () => {
+                    const reviews = await Review.findAll({
+                        where: {spotid: spot.id},
+                        attributes: ['stars'],
+                        raw: true
+                    })
+
+                    let counter = 0;
+
+                    reviews.map((reviewStars) => {
+                        counter += reviewStars.stars
+                    })
+
+                    return counter / reviews.length
+                }
+
+                const avgRating = await avgRatingValue()
 
                 let spotData = {
                     id: spot.id,
@@ -267,7 +290,7 @@ router.get('/', validateQuery, async (req, res) => {
                     price: spot.price,
                     createdAt: spot.createdAt,
                     updatedAt: spot.updatedAt,
-                    avgRating: spot.avgRating,
+                    avgRating: avgRating,
                     previewImage: null
                 }
                 console.log(2)
