@@ -16,7 +16,7 @@ function LandingPage() {
     return (
         <div className="mainDiv">
         <h1 className="spotHead">Spots</h1>
-        {spotList?.map(({id, previewImage, city, state, avgRating, description, name}) => {
+        {spotList?.map(({id, previewImage, city, state, avgRating, name}) => {
             return (
             <div key={id} className="spotdiv">
                 <img src={previewImage}/>
