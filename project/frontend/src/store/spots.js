@@ -1,5 +1,4 @@
 const GET_ALL_SPOTS = 'spot/getAllSpots'
-const CREATE_SPOT = 'spot/create'
 
 const loadSpots = (spots) => {
     return {

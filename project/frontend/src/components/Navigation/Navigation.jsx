@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        'Search bar'
+        Search bar
       </li>
       {isLoaded && (
         <li>
