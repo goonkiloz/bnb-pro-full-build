@@ -16,9 +16,11 @@ function LandingPage() {
         <div className="maindiv">
         <h1>Spots</h1>
         {spotList?.map(({id, name}) => {
+            return (
             <div key={id} className="spotdiv">
                 <h1>{name}</h1>
             </div>
+            )
         })}
         </div>
     )

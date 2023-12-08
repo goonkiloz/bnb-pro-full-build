@@ -205,7 +205,7 @@ router.get('/', validateQuery, async (req, res) => {
 
                 const avgRatingValue = async () => {
                     const reviews = await Review.findAll({
-                        where: {spotid: spot.id},
+                        where: {spotId: spot.id},
                         attributes: ['stars'],
                         raw: true
                     })
@@ -260,7 +260,7 @@ router.get('/', validateQuery, async (req, res) => {
 
                 const avgRatingValue = async () => {
                     const reviews = await Review.findAll({
-                        where: {spotid: spot.id},
+                        where: {spotId: spot.id},
                         attributes: ['stars'],
                         raw: true
                     })

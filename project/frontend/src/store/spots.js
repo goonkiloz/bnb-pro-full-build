@@ -13,7 +13,7 @@ export const getAllSpots = () => async (dispatch) => {
 
     if(response.ok) {
         const data = await response.json()
-        dispatch(loadSpots(data))
+        dispatch(loadSpots(data.Spots))
         return data;
     }
 }
@@ -21,13 +21,12 @@ export const getAllSpots = () => async (dispatch) => {
 const initaialState = {};
 
 const spotsReducer = (state = initaialState, action) => {
-    const newState = { ...state }
 
     switch (action.type) {
         case GET_ALL_SPOTS: {
-            const newState = {};
+            const newState = { ...state };
             console.log(action)
-            action.spots.Spots.forEach((spot) => (newState[spot.id] = spot))
+            action.spots.forEach((spot) => (newState[spot.id] = spot))
             return newState;
         }
         default:
