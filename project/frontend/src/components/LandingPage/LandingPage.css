@@ -1,7 +1,18 @@
-.maindiv {
+.mainDiv {
     display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    grid-template-rows: repeat(3, 1fr);
+
 }
 
-/* .spotdiv {
+.spotHead {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
 
-} */
+.spotdiv {
+
+
+}

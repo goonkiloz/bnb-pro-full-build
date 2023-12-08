@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -7,9 +7,9 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul>
+    <ul className='Nav'>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/"><img src='../../../public/favicon.ico' onClick={Navigate('/')}></img></NavLink>
       </li>
       <li>
         Search bar

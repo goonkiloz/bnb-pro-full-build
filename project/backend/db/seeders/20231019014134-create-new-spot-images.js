@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 const testImgs = [
   {
     spotId: 1,
-    url: 'https://bnbprostorage.s3.us-east-2.amazonaws.com/disney.jpg',
+    url: 'https://bnbprostorage.s3.us-east-2.amazonaws.com/2023-10-25T00%3A14%3A45.433Z-chancayReview.jpg',
     preview: true
   },
   {
