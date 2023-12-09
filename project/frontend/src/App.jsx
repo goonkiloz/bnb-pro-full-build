@@ -4,10 +4,13 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import LandingPage from './components/LandingPage';
+import SpotDetailPage from './components/SpotDetailPage';
 
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
+
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => {
@@ -30,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <LandingPage />
+      },
+      {
+        path:'/api/spots/:spotId',
+        element: <SpotDetailPage />
       }
     ]
   }

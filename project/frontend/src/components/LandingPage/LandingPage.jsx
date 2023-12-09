@@ -1,32 +1,40 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllSpots } from "../../store/spots"
+import { getSpot } from "../../store/spotDetail"
 import './LandingPage.css'
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
     const dispatch = useDispatch();
 
-    const spots = useSelector((state) => state.spot)
+    const spots = useSelector((state) => state.spots)
     const spotList = Object.values(spots)
 
     useEffect(() => {
         dispatch(getAllSpots())
     }, [dispatch])
 
+    const navigate = useNavigate()
+
     return (
-        <div className="mainDiv">
-        <h1 className="spotHead">Spots</h1>
-        {spotList?.map(({id, previewImage, city, state, avgRating, name}) => {
-            return (
-            <div key={id} className="spotdiv">
-                <img src={previewImage}/>
-                <h2>{`${city}, ${state}`}</h2>
-                <h1>{name}</h1>
-                <span>{avgRating}</span>
+        <>
+            <h1 className="spotHead">Spots</h1>
+            <div className="spotGrid">
+            {spotList?.map(({id, previewImage, name, city, state, price, avgRating}) => {
+                return (
+                <div key={id} className={'spotDiv'} title={name}>
+                        <img src={previewImage} className="spotImg" onClick={() => dispatch(getSpot(id)) && navigate(`/api/spots/${id}`)} />
+                        <div className="spotInfo">
+                            <p className="location">{`${city}, ${state}`}</p>
+                            <h2 className="rating"><span>&#9733;</span> {avgRating}</h2>
+                            <p className="price">{<span className="priceText">${price}</span>} /Night</p>
+                        </div>
+                </div>
+                )
+            })}
             </div>
-            )
-        })}
-        </div>
+        </>
     )
 }
 

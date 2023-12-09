@@ -1,14 +1,111 @@
-.mainDiv {
+.spotGrid {
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    grid-template-rows: repeat(3, 1fr);
-
+    grid: auto / 25% 25% 25% 25%;
+    margin: 50;
 }
 
-.spotHead {
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 5;
+.spotDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    column-count: 2;
+    margin: 30;
+    padding: 20;
 }
 
+
+.location {
+    grid-area: location;
+    margin: 5;
+}
+
+.rating {
+    display: flex;
+    grid-area: rating;
+    margin: 5;
+    justify-content: right;
+}
+
+.price {
+    display: inline;
+    grid-area: price;
+    margin: 5;
+}
+
+.priceText {
+    font-weight: bold;
+    color: black;
+}
+
+.spotImg {
+    max-width: 100%;
+    height: 250;
+    width: auto\9;
+}
+
+.spotInfo {
+    display: grid;
+    grid-template-areas:
+    'location rating'
+    'price .';
+    align-items: center;
+}
+
+.spotDiv:hover {
+    cursor: pointer;
+}
+
+.tooltip {
+    position:relative; /* making the .tooltip span a container for the tooltip text */
+  }
+
+.tooltip::before {
+    content: attr(data-text); /* here's the magic */
+    position:absolute;
+
+
+    /* basic styles */
+    width:200px;
+    padding:10px;
+    border-radius:10px;
+    background:#000;
+    color: #fff;
+    text-align:center;
+
+    display:none; /* hide by default */
+}
+
+.tooltip:hover:before {
+    display:block;
+  }
+
+
+@media screen and (max-width: 992px) {
+    .spotGrid {
+        display: grid;
+        grid: auto / 33% 33% 33%;
+    }
+}
+
+  /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 650px) {
+    .spotGrid {
+        display: grid;
+        grid: auto / 50% 50%;
+    }
+  }
+
+  @media screen and (max-width: 1820px) {
+    .spotImg {
+        max-width: 100%;
+        height: auto;
+        width: auto\9;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .spotGrid {
+        display: grid;
+        grid: auto / 100%;
+    }
+  }

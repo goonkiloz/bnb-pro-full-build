@@ -1,2 +1,46 @@
 /* TODO: Add sitewide styles */
 
+ul.nav {
+    scale: 1;
+    display: flex;
+    list-style: none;
+    height: 70px;
+    padding: 0 20 ;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-bottom: 2px solid lightgray;
+}
+
+h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+h2 {
+    font-size: 18pt;
+    font-weight: bold;
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+p {
+    font-size: 14pt;
+    color: black;
+}
+
+span {
+    font-size: 14pt;
+    color: black;
+}
+
+body {
+    background-color: #E8F0FE;
+  }
+
+  @media screen and (max-widt: 2520) {
+
+  }
