@@ -1,18 +1,5 @@
 /* TODO: Add sitewide styles */
 
-ul.nav {
-    scale: 1;
-    display: flex;
-    list-style: none;
-    height: 70px;
-    padding: 0 20 ;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    border-bottom: 2px solid lightgray;
-}
-
 h1 {
     font-size: 24pt;
     font-weight: bold;
@@ -38,9 +25,6 @@ span {
 }
 
 body {
-    background-color: #E8F0FE;
-  }
+    background-color: rgba(180, 229, 238, 0.4);
+}
 
-  @media screen and (max-widt: 2520) {
-
-  }

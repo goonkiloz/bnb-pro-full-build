@@ -14,10 +14,18 @@ function Navigation({ isLoaded }) {
     window.alert('Feature in Work!')
   }
 
+  const isOwner = (sessionUser) => {
+    if(sessionUser !== null) {
+      return true
+    }
+  }
+
+  console.log(sessionUser)
+
   return (
-    <ul className='Nav'>
+    <ul className='nav'>
       <li>
-        <NavLink to="/"><img src='../../../public/favicon.ico' onClick={Navigate('/')}></img></NavLink>
+        <NavLink to="/"><img src='/favicon.ico' onClick={Navigate('/')}></img></NavLink>
       </li>
       <li className='searchBarLi'>
         <input className='searchBar'
@@ -33,11 +41,20 @@ function Navigation({ isLoaded }) {
           Search
           </button>
       </li>
+      <div className='profileDiv'>
+      <li>
+        {isOwner(sessionUser) && (
+                <NavLink to='/spots/new' className='create'>
+                Create a New Spot
+              </NavLink>
+        )}
+      </li>
       {isLoaded && (
         <li className='dropDown'>
           <ProfileButton user={sessionUser} />
         </li>
       )}
+      </div>
     </ul>
   );
 }

@@ -4,6 +4,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -37,38 +38,40 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown" + (showMenu ? "show" : " hidden");
 
   return (
     <>
       <button onClick={toggleMenu} className='ProfileButton'>
-        <i className="fas fa-user-circle" />
+      <i className="fa fa-list-ul" aria-hidden="true" /> <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
+          <ul className='UserInfo'>
+            <li className='userName'>Hello, {user.username}</li>
+            <li className='email'>{user.email}</li>
+            <li className='spotManage'>Manage Spots</li>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button onClick={logout} className='logoutButton'>Log Out</button>
             </li>
-          </>
+          </ul>
         ) : (
-          <>
+          <div className='dropdown'>
             <OpenModalMenuItem
+              className='loginButton'
               itemText="Log In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
             <OpenModalMenuItem
+              className='signUpButton'
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
-          </>
+          </div>
         )}
-      </ul>
+      </div>
     </>
   );
 }

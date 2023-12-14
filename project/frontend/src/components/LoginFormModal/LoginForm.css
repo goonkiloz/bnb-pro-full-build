@@ -1,0 +1,47 @@
+#modal-content{
+    display: flex;
+    flex-direction: column;
+    padding: 20;
+    border-radius: 5%;
+}
+
+.loginForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user {
+    margin: 10 10 0 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.password {
+    margin: 5 10 20 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.loginButton {
+    height: 70;
+    width: 400;
+    box-shadow: 4px 4px rgba(78, 89, 94, 0.5);
+}
+
+.loginButton:hover {
+    cursor: pointer;
+}
+
+.demoUser {
+    background-color: white;
+    border: none;
+    color: blue;
+    margin-top: 30;
+}
+
+.demoUser:hover {
+    cursor: pointer;
+}

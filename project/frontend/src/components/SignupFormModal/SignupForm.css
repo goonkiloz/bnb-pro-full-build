@@ -1,0 +1,67 @@
+#modal-content{
+    display: flex;
+    flex-direction: column;
+    padding: 20;
+    border-radius: 5%;
+}
+
+.signUpForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.emailSignUp {
+    margin: 10 10 0 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.userSignUp {
+    margin: 5 10 0 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.firstName {
+    margin: 5 10 0 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.lastName {
+    margin: 5 10 0 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.passwordSignUp {
+    margin: 5 10 0 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+.confirmPasswordSignUp {
+    margin: 5 10 20 10;
+    height: 30;
+    width: 400;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.signUpButton {
+    height: 70;
+    width: 400;
+    box-shadow: 4px 4px rgba(78, 89, 94, 0.5);
+}
+
+.signUpButton:hover {
+    cursor: pointer;
+}
+
+.signUpError {
+    margin:  0;
+}

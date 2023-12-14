@@ -1,0 +1,165 @@
+.spotDetailDiv {
+    display: grid;
+    grid-template-columns: 1fr 25% 25%;
+    grid-template-areas:
+        'name . . '
+        'location . . '
+        'img img img '
+        'img img img'
+        'owner  . reserve '
+        'description description  reserve ';
+    padding: 0 5% 120 5%;
+    border-bottom: grey solid thin;
+    column-gap: 10px;
+
+}
+
+.reviewDiv {
+    padding: 5 5% 120 5%;
+}
+
+.reviewDivHead {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+}
+
+.review {
+    padding: 10 0;
+}
+
+.reviewUser {
+    margin: 5 0;
+}
+
+.reviewDate {
+    margin: 10 0;
+}
+
+.ReviewText {
+    margin: 10 0;
+
+}
+
+.divReviewText {
+    margin-right: 15;
+}
+
+.divReviewCount {
+    margin: 15;
+}
+
+.spotName {
+    grid-area: name
+}
+
+.location {
+    grid-area: location;
+}
+
+.spotImgDiv {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 49.6% 25% 25%;
+    grid-template-areas:
+        'preview img img'
+        'preview img img';
+    grid-area: img;
+    margin: 20 0;
+    gap: 5px;
+}
+
+.spotImgPreview {
+    grid-area: preview;
+    width: 100%;
+    height: 695;
+    object-fit: fill;
+
+}
+
+.spotImgPreview:hover {
+    box-shadow: 4px 4px;
+}
+
+.spotImgSingle {
+    grid-area: img;
+    width: 100%;
+    height: 100%;
+    max-height: 345;
+    object-fit: fill;
+}
+
+.spotImgSingle:hover {
+    box-shadow: 4px 4px;
+}
+
+
+.ownerName {
+    grid-area: owner;
+}
+
+.description {
+    grid-area: description;
+    width: 75%;
+}
+
+.spotReview {
+    display: flex;
+    align-items: baseline;
+    margin: 0;
+    justify-content: space-evenly;
+    justify-self: flex-end;
+}
+
+.dotSpan {
+    grid-area: dot;
+    font-weight: bold;
+    padding: 0 10;
+}
+
+.ReviewText {
+    grid-area: text;
+}
+
+.reviewCount {
+    grid-area: count;
+}
+
+
+
+.reserveInfo {
+    border: solid black 2px;
+    border-radius: 3%;
+    padding: 20;
+    grid-area: reserve;
+    display: grid;
+    grid-template-areas:
+    'price . review'
+    'button button button'
+    'button button button';
+    grid-template-columns: 33% 33% 33%;
+}
+
+.spotPrice {
+    grid-area: price;
+    margin: 0;
+    align-self: center;
+}
+
+.spotReview {
+    grid-area: review;
+}
+
+.reserveButton {
+    grid-area: button;
+    background-color: red;
+    color: white;
+    box-shadow: 2px 2px black;
+    height: 50;
+}
+
+.reviewButton {
+    background-color: red;
+    height: 40;
+    align-self: center;
+}

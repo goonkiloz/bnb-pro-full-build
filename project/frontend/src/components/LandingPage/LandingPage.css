@@ -1,7 +1,7 @@
 .spotGrid {
     display: grid;
     grid: auto / 25% 25% 25% 25%;
-    margin: 50;
+    margin: 0 50;
 }
 
 .spotDiv {
@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     column-count: 2;
-    margin: 30;
+    margin: 10;
     padding: 20;
 }
 
@@ -41,6 +41,7 @@
     max-width: 100%;
     height: 250;
     width: auto\9;
+    border-radius: 5%;
 }
 
 .spotInfo {

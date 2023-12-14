@@ -32,6 +32,7 @@ function SignupFormModal() {
         .catch(async (res) => {
           const data = await res.json();
           if (data?.errors) {
+            console.log(data)
             setErrors(data.errors);
           }
         });
@@ -42,62 +43,78 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div className='signUpForm'>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='signUpForm'>
         <label>
-          Email
           <input
+            className='emailSignUp'
+            placeholder='Email'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email &&(
+          <p className='signUpError' style={{color: 'red'}}>{errors.email}</p>
+        )}
         <label>
-          Username
           <input
+            className='userSignUp'
+            placeholder='Username(must be longer than 4 characters)'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && (
+          <p className='signUpError' style={{color: 'red'}}>{errors.username}</p>
+        )}
         <label>
-          First Name
           <input
+            className='firstName'
+            placeholder='First Name'
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
+        {errors.firstName && (
+          <p className='signUpError' style={{color: 'red'}}>{errors.firstName}</p>
+        )}
         <label>
-          Last Name
           <input
+            className='lastName'
+            placeholder='Last Name'
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
+        {errors.lastName && (
+          <p className='signUpError' style={{color: 'red'}}>{errors.lastName}</p>
+        )}
         <label>
-          Password
           <input
+            className='passwordSignUp'
+            placeholder='Password'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && (
+          <p className='signUpError' style={{color: 'red'}}>{errors.password}</p>
+        )}
         <label>
-          Confirm Password
           <input
+            className='confirmPasswordSignUp'
+            placeholder='Confirm Password'
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -105,11 +122,11 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && (
-          <p>{errors.confirmPassword}</p>
+          <p className='signUpError' style={{color: 'red'}}>{errors.confirmPassword}</p>
         )}
-        <button type="submit">Sign Up</button>
+        <button type="submit" className='signUpButton'>Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

@@ -216,7 +216,9 @@ router.get('/', validateQuery, async (req, res) => {
                         counter += reviewStars.stars
                     })
 
-                    return counter / reviews.length
+                    const avgNum = counter / reviews.length
+
+                    return Math.round(avgNum * 10) / 10
                 }
 
                 const avgRating = await avgRatingValue()
@@ -271,7 +273,9 @@ router.get('/', validateQuery, async (req, res) => {
                         counter += reviewStars.stars
                     })
 
-                    return counter / reviews.length
+                    const avgNum = counter / reviews.length
+
+                    return Math.round(avgNum * 10) / 10
                 }
 
                 const avgRating = await avgRatingValue()
@@ -412,7 +416,9 @@ router.get('/', validateQuery, async (req, res) => {
                     counter += reviewStars.stars
                 })
 
-                return counter / reviews.length
+                const avgNum = counter / reviews.length
+
+                return Math.round(avgNum * 10) / 10
             }
 
             const avgRating = await avgRatingValue()
@@ -503,7 +509,9 @@ router.get('/current', requireAuth, async (req, res) => {
                         counter += reviewStars.stars
                     })
 
-                    return counter / reviews.length
+                    const avgNum = counter / reviews.length
+
+                    return Math.round(avgNum * 10) / 10
                 }
 
                 const avgRating = await avgRatingValue()
@@ -563,7 +571,9 @@ router.get('/current', requireAuth, async (req, res) => {
                         counter += reviewStars.stars
                     })
 
-                    return counter / reviews.length
+                    const avgNum = counter / reviews.length
+
+                    return Math.round(avgNum * 10) / 10
                 }
 
                 const avgRating = await avgRatingValue()
@@ -680,9 +690,8 @@ router.get('/:spotId', async (req, res) => {
         where: {spotId: spotId}
     })
 
-    const compare = []
-
-    if(reviewCheck === compare) {
+    if(reviewCheck.length > 0) {
+        console.log(1)
         const spot = await Spot.findOne({
             where: {id: spotId},
             include: [
@@ -691,12 +700,7 @@ router.get('/:spotId', async (req, res) => {
                     where: {spotId: spotId},
                     attributes: [],
                 }
-            ],
-            attributes: {
-                include: [
-                    [sequelize.fn('AVG', sequelize.col('reviews.stars')), 'avgRating']
-                ]
-            }
+            ]
         })
 
         const SpotImages = await SpotImage.findAll({
@@ -717,6 +721,26 @@ router.get('/:spotId', async (req, res) => {
             }
         })
 
+        const avgRatingValue = async () => {
+            const reviews = await Review.findAll({
+                where: {spotId: spot.id},
+                attributes: ['stars'],
+                raw: true
+            })
+
+            let counter = 0;
+
+            reviews.map((reviewStars) => {
+                counter += reviewStars.stars
+            })
+
+            const avgNum = counter / reviews.length
+
+            return Math.round(avgNum * 10) / 10
+        }
+
+        const avgRating = await avgRatingValue()
+
         const data = {
             id: spot.id,
             ownerId: spot.ownerId,
@@ -732,17 +756,21 @@ router.get('/:spotId', async (req, res) => {
             createdAt: spot.createdAt,
             updatedAt: spot.updatedAt,
             numReview: reviewCount,
-            avgRating: spot.avgRating,
+            avgRating: avgRating,
             SpotImages,
             Owner
         }
 
+
         res.status(200)
         res.json(data)
-    } else {
+    } else if(reviewCheck.length === 0) {
+        console.log(2)
         const spot = await Spot.findOne({
             where: {id: spotId}
         })
+
+        console.log(spot)
 
         const SpotImages = await SpotImage.findAll({
             where: {spotId: spotId},
@@ -762,6 +790,7 @@ router.get('/:spotId', async (req, res) => {
             }
         })
 
+
         const data = {
             id: spot.id,
             ownerId: spot.ownerId,
@@ -777,7 +806,7 @@ router.get('/:spotId', async (req, res) => {
             createdAt: spot.createdAt,
             updatedAt: spot.updatedAt,
             numReview: reviewCount,
-            avgRating: null,
+            avgRating: 0,
             SpotImages,
             Owner
         }
@@ -814,8 +843,6 @@ router.post('/:spotId/images', requireAuth, uploadImg.single('url'), async (req,
 
     const { spotId } = req.params;
 
-    const { file } = req;
-
     const { preview, url } = req.body;
 
     const spot = await Spot.findOne({
@@ -841,7 +868,7 @@ router.post('/:spotId/images', requireAuth, uploadImg.single('url'), async (req,
     if(req.headers['content-type'] === 'application/json') {
          filename = url
     }else{
-        filename = new Date().toISOString() + '-' + (req.file.originalname);
+        filename = new Date().toDateString() + '-' + (req.file.originalname);
     }
 
 
