@@ -20,8 +20,6 @@ function Navigation({ isLoaded }) {
     }
   }
 
-  console.log(sessionUser)
-
   return (
     <ul className='nav'>
       <li>

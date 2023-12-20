@@ -1,0 +1,182 @@
+.createSpot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    max-width: 750;
+    width: 100%;
+}
+
+
+.formDiv {
+    display: grid;
+    grid-template-areas:
+    'location'
+    'descriptionDiv'
+    'nameDiv'
+    'priceDiv'
+    'uploadDiv';
+
+}
+
+.locationDiv {
+    display: grid;
+    grid-area: location;
+    grid-template-columns: 24% 24% 2% 24% 2% 24%;
+    grid-template-areas:
+        'locationHead locationHead . . . .'
+        'locationP locationP locationP . . .'
+        'country country country country country country'
+        'address address address address address address'
+        'city city city city statecom state'
+        'lat lat lngcom lng lng lng';
+    border-bottom: grey 2px solid;
+    margin: 10 0 0 0;
+    padding: 0 0 20 0;
+}
+
+.locationHead {
+    grid-area: locationHead;
+    margin: 0;
+}
+
+.locationP {
+    grid-area: locationP;
+    margin: 5 0 20 0;
+}
+
+.country {
+    grid-area: country;
+    margin: 10 0;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.address {
+    grid-area: address;
+    margin: 10 0;
+    background-color: rgba(90, 171, 209, 0.5);
+
+}
+
+.city {
+    grid-area: city;
+    margin: 10 0;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.stateCom {
+    grid-area: statecom;
+    margin: 10 0;
+    justify-self: center;
+}
+
+.state {
+    grid-area: state;
+    margin: 10 0;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.latitude {
+    grid-area: lat;
+    margin: 10 0;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.lngCom {
+    grid-area: lngcom;
+    justify-self: center;
+    margin: 10 0;
+}
+
+.longitude {
+    grid-area: lng;
+    margin: 10 0;
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.descriptionDiv {
+    grid-area: descriptionDiv;
+    border-bottom: grey 2px solid;
+    margin: 10 0 0 0;
+    padding: 0 0 20 0;
+}
+
+.descriptionHead {
+    margin: 0;
+}
+
+.descriptionText {
+    margin: 5 0 20 0;
+}
+
+.newdescription {
+    background-color: rgba(90, 171, 209, 0.5);
+    height: 140px;
+    max-width: 750px;
+    width: 100%;
+    border: black solid 2px;
+}
+
+.nameDiv {
+    grid-area: nameDiv;
+    border-bottom: grey 2px solid;
+    margin: 10 0;
+    padding: 0 0 20 0;
+}
+
+.name {
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.nameHead {
+    margin: 0;
+}
+
+.nameText {
+    margin: 5 0 20 0;
+}
+
+.priceDiv {
+    grid-area: priceDiv;
+    border-bottom: grey 2px solid;
+    margin: 10 0 0 0;
+    padding: 0 0 20 0;
+}
+
+.priceHead {
+    margin: 0;
+}
+
+.priceDivText {
+    margin: 5 0 20 0;
+}
+
+.newprice {
+    background-color: rgba(90, 171, 209, 0.5);
+}
+
+.uploadDiv {
+    grid-area: uploadDiv;
+    border-bottom: grey 2px solid;
+    margin: 10 0 50 0;
+    padding: 0 0 30 0;
+}
+
+.uploadHead {
+    margin: 0;
+}
+
+.uploadText {
+    margin: 5 0 20 0;
+}
+
+.createSpotButton {
+    justify-self: center;
+    width: 33%;
+    height: 40;
+    font-weight: bold;
+    background-color: red;
+    border-radius: 5%;
+}

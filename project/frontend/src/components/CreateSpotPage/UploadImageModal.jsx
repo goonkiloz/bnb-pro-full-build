@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { useModal } from '../../context/Modal';
-import { createSpotImage } from '../../store/spots';
 
 function UploadImageModal(props) {
   const { onRegister } = props
@@ -9,29 +7,21 @@ function UploadImageModal(props) {
   const { closeModal } = useModal()
 
   function handleMultipleChange(event) {
-    console.log(event.target.files)
     setFiles([...event.target.files]);
-  }
-
-  function handleMultipleSubmit(event) {
-    event.preventDefault();
-    console.log(files)
-
-    closeModal()
-
-
   }
 
   const reg = () => {
     onRegister(files);
+
+    closeModal()
   }
 
   return (
     <div className="App">
-      <form onSubmit={handleMultipleSubmit}>
-        <h1>React Multiple File Upload</h1>
+      <form >
+        <h1>Upload Spots Here!</h1>
         <input type="file" multiple onChange={handleMultipleChange} />
-        <button type="submit" onClick={reg}>Upload</button>
+        <button type= 'button' onClick={reg}>Upload</button>
       </form>
     </div>
   );

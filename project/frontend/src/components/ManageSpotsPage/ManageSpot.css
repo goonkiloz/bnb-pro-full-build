@@ -1,0 +1,12 @@
+.manageSpotHead {
+    margin: 50 80;
+}
+
+.manageSpotDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    column-count: 2;
+    margin: 10;
+    padding: 20;
+}

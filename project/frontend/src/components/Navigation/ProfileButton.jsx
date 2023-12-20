@@ -5,6 +5,8 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css'
+import { NavLink } from 'react-router-dom';
+import { getUserSpots } from '../../store/spots';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -50,7 +52,10 @@ function ProfileButton({ user }) {
           <ul className='UserInfo'>
             <li className='userName'>Hello, {user.username}</li>
             <li className='email'>{user.email}</li>
-            <li className='spotManage'>Manage Spots</li>
+            <li>
+
+            </li>
+            <NavLink className='spotManage' to={'/spots/manage'} onClick={dispatch(getUserSpots())}>Manage Spots</NavLink>
             <li>
               <button onClick={logout} className='logoutButton'>Log Out</button>
             </li>
