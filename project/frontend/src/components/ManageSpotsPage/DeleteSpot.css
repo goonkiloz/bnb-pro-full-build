@@ -1,0 +1,20 @@
+.deleteDiv > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.deleteButton {
+    width: 75%;
+    height: 50;
+    margin-bottom: 10;
+    background-color: red;
+    box-shadow: 3px 4px black;
+}
+
+.noButton {
+    width: 75%;
+    height: 50;
+    background-color: grey;
+    box-shadow: 3px 4px black;
+}

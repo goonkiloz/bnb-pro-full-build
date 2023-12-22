@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
   return (
     <ul className='nav'>
       <li>
-        <NavLink to="/"><img src='/favicon.ico' onClick={Navigate('/')}></img></NavLink>
+        <NavLink to="/"><img className='logoimg' src='/favicon.ico' onClick={Navigate('/')}></img></NavLink>
       </li>
       <li className='searchBarLi'>
         <input className='searchBar'

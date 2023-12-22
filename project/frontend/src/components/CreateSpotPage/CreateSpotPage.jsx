@@ -35,6 +35,11 @@ function CreateSpotPage() {
 
         setErrors({});
 
+        if(files.length === 0) {
+
+            return setErrors({upload: 'Preview image required'})
+        }
+
         const data = {
 
             country,
@@ -54,6 +59,8 @@ function CreateSpotPage() {
             if(data && data.errors) {
                 setErrors(data.errors)
             }
+
+            console.log(errors)
         })
         .then((data) => {
             files.forEach((file, index) => {
@@ -151,8 +158,8 @@ function CreateSpotPage() {
                             <label>
                                 Latitude
                             </label>
-                            {errors?.latitude && (
-                                <p style={{color: 'red'}}>{errors.latitude}</p>
+                            {errors?.lat && (
+                                <p style={{color: 'red'}}>{errors.lat}</p>
                             )}
                             <input
                                 className="latitude"
@@ -167,8 +174,8 @@ function CreateSpotPage() {
                             <label>
                                 Longitude
                             </label>
-                            {errors?.longitude && (
-                                <p style={{color: 'red'}}>{errors.longitude}</p>
+                            {errors?.lng && (
+                                <p style={{color: 'red'}}>{errors.lng}</p>
                             )}
                             <input
                                 className="longitude"
@@ -224,6 +231,9 @@ function CreateSpotPage() {
                     <div className="uploadDiv">
                         <h3 className="uploadHead">Liven up your spot with photos</h3>
                         <p className="uploadText">Click the button below to add personalized photos to your spot to attract guests.</p>
+                        {errors?.upload && (
+                            <p style={{color: 'red'}}>{errors?.upload}</p>
+                        )}
                         <OpenModalButton
                             className="uploadButton"
                             buttonText={'Upload Here!'}

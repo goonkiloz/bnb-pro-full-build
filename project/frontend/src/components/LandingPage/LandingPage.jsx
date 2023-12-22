@@ -24,8 +24,8 @@ function LandingPage() {
 
                 if(avgRating === 0) {
                     return (
-                        <div key={id} className={'spotDiv'} title={name}>
-                                <img src={previewImage} className="spotImg" onClick={() => navigate(`/spots/${id}`)} />
+                        <div key={id} className={'spotDiv'} title={name} onClick={() => navigate(`/spots/${id}`)}>
+                                <img src={previewImage} className="spotImg" />
                                 <div className="spotInfo">
                                     <p className="location">{`${city}, ${state}`}</p>
                                     <h2 className="rating"><span>&#9733;</span> New</h2>
@@ -35,11 +35,11 @@ function LandingPage() {
                         )
                 } else {
                     return (
-                        <div key={id} className={'spotDiv'} title={name}>
-                                <img src={previewImage} className="spotImg" onClick={() => navigate(`/spots/${id}`)} />
+                        <div key={id} className={'spotDiv'} title={name} onClick={() => navigate(`/spots/${id}`)}>
+                                <img src={previewImage} className="spotImg"  />
                                 <div className="spotInfo">
                                     <p className="location">{`${city}, ${state}`}</p>
-                                    <h2 className="rating"><span>&#9733;</span> {avgRating}</h2>
+                                    <h2 className="rating"><span>&#9733;</span> {parseFloat(avgRating).toFixed(1)}</h2>
                                     <p className="price">{<span className="priceText">${price}</span>} /Night</p>
                                 </div>
                         </div>

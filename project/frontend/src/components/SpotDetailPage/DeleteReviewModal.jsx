@@ -16,12 +16,12 @@ function DeleteReviewModal(props) {
     }
 
     return (
-        <div className="App">
+        <div className="deleteDiv">
             <form onSubmit={handleSubmit}>
                 <h1>Confirm Delete</h1>
                 <h3>Are you sure you want to remove this review?</h3>
-                <button type='submit'>Yes (Delete Review)</button>
-                <button type='button' onClick={() => closeModal()}>No (Keep Review)</button>
+                <button className= 'deleteButton' type='submit'>Yes (Delete Review)</button>
+                <button className='noButton' type='button' onClick={() => closeModal()}>No (Keep Review)</button>
             </form>
         </div>
      );

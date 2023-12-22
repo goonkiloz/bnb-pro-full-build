@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useModal } from '../../context/Modal';
 import { FaStar } from 'react-icons/fa'
 import './SpotDetail.css'
@@ -10,7 +10,9 @@ function ReviewSpotModal(props) {
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
     const [review, setReview] = useState('')
+    const [errors, setErrors] = useState('')
     const { closeModal } = useModal()
+    const [disable, setDisable] = useState(true)
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.session)
@@ -25,14 +27,30 @@ function ReviewSpotModal(props) {
         }
 
         dispatch(createReview(spotId, data, user))
+        .catch(async (res) => {
+            const data = await res.json();
+            console.log(data)
+            if (data && data.message) {
+              setErrors(data);
+            }
+          });
         closeModal()
     }
+
+    useEffect(() => {
+        if(review.length >= 10 && rating){
+          return setDisable(false)
+        } else setDisable(true)
+      }, [review, rating, setDisable])
 
 
     return (
         <div className="App">
             <form onSubmit={handleSubmit} className='review-box'>
                 <h1 className='review-box-header'>How was your stay?</h1>
+                {errors && (
+                    <p style={{color: 'red'}}>{errors}</p>
+                )}
                 <textarea
                     className='review-box-textarea'
                     placeholder='Leave your review here...'
@@ -67,7 +85,7 @@ function ReviewSpotModal(props) {
 
                     })}
                 </div>
-                <button type='submit'>Submit Your Review</button>
+                <button type='submit' disabled={disable}>Submit Your Review</button>
             </form>
         </div>
      );

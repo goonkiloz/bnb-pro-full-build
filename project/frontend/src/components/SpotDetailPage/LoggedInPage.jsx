@@ -96,7 +96,7 @@ function LoggedInPage () {
                                     <span>
                                         &#9733;
                                     </span>
-                                    {spot?.avgRating}
+                                    {parseFloat(spot?.avgRating).toFixed(1)}
                                 </span>
                             </span>
                             <span className="dotSpan">&#183;</span>
@@ -115,7 +115,7 @@ function LoggedInPage () {
                                     <span>
                                         &#9733;
                                     </span>
-                                    {spot?.avgRating}
+                                    {parseFloat(spot?.avgRating).toFixed(1)}
                                 </span>
                             </span>
                             <span>&#183;</span>
@@ -209,7 +209,7 @@ function LoggedInPage () {
                                             <span>
                                                 &#9733;
                                             </span>
-                                            {spot?.avgRating}
+                                            {parseFloat(spot?.avgRating).toFixed(1)}
                                         </span>
                                     </span>
                                     <span className="dotSpan">&#183;</span>
@@ -228,7 +228,7 @@ function LoggedInPage () {
                                             <span>
                                                 &#9733;
                                             </span>
-                                            {spot?.avgRating}
+                                            {parseFloat(spot?.avgRating).toFixed(1)}
                                         </span>
                                     </span>
                                     <span>&#183;</span>
