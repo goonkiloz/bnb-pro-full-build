@@ -47,53 +47,180 @@
     margin: 5 0 20 0;
 }
 
-.country {
+.countryDiv {
     grid-area: country;
+    display: grid;
+    grid-template-areas:
+    'countrylabel countryerrors . .'
+    'countrytext countrytext countrytext countrytext'
+    ;
+}
+
+.countryDiv > label {
+    grid-area: countrylabel;
+    margin: 0;
+}
+
+.countryDiv > p {
+    margin: 0;
+    grid-area: countryerrors;
+}
+
+.country {
+    grid-area: countrytext;
+    width: 100%;
     margin: 10 0;
     background-color: rgba(90, 171, 209, 0.5);
+}
+
+.addressDiv {
+    grid-area: address;
+    display: grid;
+    grid-template-areas:
+    'addresslabel addresserrors . .'
+    'addresstext addresstext addresstext addresstext'
+    ;
+}
+
+.addressDiv > label {
+    grid-area: addresslabel;
+    margin: 0;
+}
+
+.addressDiv > p {
+    margin: 0;
+    grid-area: addresserrors;
 }
 
 .address {
-    grid-area: address;
+    grid-area: addresstext;
+    width: 100%;
     margin: 10 0;
     background-color: rgba(90, 171, 209, 0.5);
+}
 
+.cityDiv {
+    grid-area: city;
+    display: grid;
+    grid-template-areas:
+    'citylabel cityerrors . .'
+    'citytext citytext citytext citytext'
+    ;
+}
+
+.cityDiv > label {
+    grid-area: citylabel;
+    margin: 0;
+}
+
+.cityDiv > p {
+    margin: 0;
+    grid-area: cityerrors;
 }
 
 .city {
-    grid-area: city;
+    grid-area: citytext;
+    width: 100%;
     margin: 10 0;
     background-color: rgba(90, 171, 209, 0.5);
 }
 
 .stateCom {
     grid-area: statecom;
+    display: flex;
+    flex-direction: row;
     margin: 10 0;
-    justify-self: center;
+    align-items: end;
+    justify-content: center;
+
 }
 
-.state {
+.stateDiv {
     grid-area: state;
+    display: grid;
+    grid-template-areas:
+    'statelabel stateerrors'
+    'statetext statetext'
+    ;
+}
+
+.stateDiv > label {
+    grid-area: statelabel;
+    margin: 0;
+}
+
+.stateDiv > p {
+    margin: 0;
+    grid-area: stateerrors;
+}
+.state {
+    grid-area: statetext;
+    height: 25;
+    width: 100%;
     margin: 10 0;
     background-color: rgba(90, 171, 209, 0.5);
 }
 
-.latitude {
+.latDiv {
     grid-area: lat;
+    display: grid;
+    grid-template-areas:
+    'latlabel laterrors'
+    'lattext lattext'
+    ;
+}
+
+.latDiv > label {
+    grid-area: latlabel;
+    margin: 0;
+}
+
+.latDiv > p {
+    margin: 0;
+    grid-area: laterrors;
+}
+
+.latitude{
+    grid-area: lattext;
+    width: 100%;
     margin: 10 0;
     background-color: rgba(90, 171, 209, 0.5);
 }
 
 .lngCom {
     grid-area: lngcom;
-    justify-self: center;
+    display: flex;
+    flex-direction: row;
     margin: 10 0;
+    align-items: end;
+    justify-content: center;
+}
+
+.lngDiv {
+    grid-area: lng;
+    display: grid;
+    grid-template-areas:
+    'lnglabel lngerrors'
+    'lngtext lngtext'
+    ;
+}
+
+.lngDiv > label {
+    grid-area: lnglabel;
+    margin: 0;
+}
+
+.lngDiv > p {
+    margin: 0;
+    grid-area: lngerrors;
 }
 
 .longitude {
-    grid-area: lng;
+    grid-area: lngtext;
+    width: 100%;
     margin: 10 0;
     background-color: rgba(90, 171, 209, 0.5);
+
 }
 
 .descriptionDiv {

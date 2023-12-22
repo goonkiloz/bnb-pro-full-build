@@ -1,18 +1,18 @@
 import { useModal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
-import { deleteReview, getSpotReviews } from '../../store/reviews';
+import { deleteReview} from '../../store/reviews';
 
 function DeleteReviewModal(props) {
     const dispatch = useDispatch()
 
     const { closeModal } = useModal()
 
-    const { reviewId, spotId } = props;
+    const { reviewId } = props;
 
     const handleSubmit = async(e) => {
         e.preventDefault()
         await dispatch(deleteReview(reviewId))
-        .then( dispatch(getSpotReviews(spotId)) && closeModal())
+        .then(closeModal())
     }
 
     return (

@@ -32,38 +32,27 @@ function CreateSpotPage() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        setErrors({})
-        // const data = {
 
-        //     country,
-        //     address,
-        //     city,
-        //     state,
-        //     lat: parseFloat(latitude),
-        //     lng: parseFloat(longitude),
-        //     description,
-        //     price,
-        //     name,
-        // }
+        setErrors({});
 
         const data = {
 
-            country: 'united states',
-            address: '123 lane way',
-            city: 'sadfasdfa',
-            state: 'asdfasdf',
-            lat: 10.4,
-            lng: 10.4,
-            description: 'asdfasdfasdf',
-            price: 123,
-            name: 'asdfasdfasdfas',
+            country,
+            address,
+            city,
+            state,
+            lat: parseFloat(latitude),
+            lng: parseFloat(longitude),
+            description,
+            price,
+            name,
         }
 
         await dispatch(createSpot(data))
         .catch(async (res) => {
             const data = await res.json()
             if(data && data.errors) {
-                setErrors(data)
+                setErrors(data.errors)
             }
         })
         .then((data) => {
@@ -83,9 +72,7 @@ function CreateSpotPage() {
                 }
             })
             navigate(`/spots/${data.id}`)
-            }
-
-        )
+        })
     }
 
     return (
@@ -99,72 +86,105 @@ function CreateSpotPage() {
                     <div className="locationDiv">
                         <h3 className="locationHead">Where is your place located?</h3>
                         <p className="locationP">Guests will only get your exact address once they booked a reservation.</p>
-                        <input
-                            className="country"
-                            placeholder="Country"
-                            type="text"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                        />
-                        {errors?.country && (
-                            <p>{errors.country}</p>
-                        )}
-                        <input
-                            className="address"
-                            placeholder="Street Address"
-                            type="text"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                        />
-                        {errors?.address && (
-                            <p>{errors.address}</p>
-                        )}
-                        <input
-                            className="city"
-                            placeholder="City"
-                            type="text"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        />
-                        {errors?.city && (
-                            <p>{errors.city}</p>
-                        )}
-                        <span className="stateCom"> ,</span>
-                        <input
-                            className="state"
-                            placeholder="State"
-                            type="text"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                        />
-                        {errors?.state && (
-                            <p>{errors.state}</p>
-                        )}
-                        <input
-                            className="latitude"
-                            placeholder="Latitude"
-                            type="text"
-                            value={latitude}
-                            onChange={(e) => setLatitude(e.target.value)}
-                        />
-                        {errors?.latitude && (
-                            <p>{errors.latitude}</p>
-                        )}
-                        <span className="lngCom"> ,</span>
-                        <input
-                            className="longitude"
-                            placeholder="Longitude"
-                            type="text"
-                            value={longitude}
-                            onChange={(e) => setLongitude(e.target.value)}
-                        />
-                        {errors?.longitude && (
-                            <p>{errors.longitude}</p>
-                        )}
+                        <div className="countryDiv">
+                            <label>
+                                Country
+                            </label>
+                            {errors?.country && (
+                                <p style={{color: 'red'}}>{errors?.country}</p>
+                            )}
+                            <input
+                                className="country"
+                                placeholder="Country"
+                                type="text"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                            />
+                        </div>
+                        <div className="addressDiv">
+                            <label>
+                                Street Address
+                            </label>
+                            {errors?.address && (
+                                <p style={{color: 'red'}}>{errors.address}</p>
+                            )}
+                            <input
+                                className="address"
+                                placeholder="Street Address"
+                                type="text"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                            />
+                        </div>
+                        <div className="cityDiv">
+                            <label>
+                                City
+                            </label>
+                            {errors?.city && (
+                                <p style={{color: 'red'}}>{errors.city}</p>
+                            )}
+                            <input
+                                className="city"
+                                placeholder="City"
+                                type="text"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                        </div>
+                            <span className="stateCom"> ,</span>
+                        <div className="stateDiv">
+                            <label>
+                                State
+                            </label>
+                            {errors?.state && (
+                                <p style={{color: 'red'}}>{errors.state}</p>
+                            )}
+                            <input
+                                className="state"
+                                placeholder="State"
+                                type="text"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                            />
+                        </div>
+                        <div className="latDiv">
+                            <label>
+                                Latitude
+                            </label>
+                            {errors?.latitude && (
+                                <p style={{color: 'red'}}>{errors.latitude}</p>
+                            )}
+                            <input
+                                className="latitude"
+                                placeholder="Latitude"
+                                type="text"
+                                value={latitude}
+                                onChange={(e) => setLatitude(e.target.value)}
+                            />
+                        </div>
+                            <span className="lngCom"> ,</span>
+                        <div className="lngDiv">
+                            <label>
+                                Longitude
+                            </label>
+                            {errors?.longitude && (
+                                <p style={{color: 'red'}}>{errors.longitude}</p>
+                            )}
+                            <input
+                                className="longitude"
+                                placeholder="Longitude"
+                                type="text"
+                                value={longitude}
+                                onChange={(e) => setLongitude(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <div className="descriptionDiv">
                         <h3 className="descriptionHead">Describe your place to guests</h3>
                         <p className="descriptionText">Mention the best feature of you space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</p>
+                        {errors?.description && (
+                            <p style={{color: 'red'}}>{errors.description}</p>
+                        )}
                         <textarea
                             className="newdescription"
                             placeholder="Please write at least 30 characters"
@@ -172,13 +192,13 @@ function CreateSpotPage() {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
-                        {errors?.description && (
-                            <p>{errors.description}</p>
-                        )}
                     </div>
                     <div className="nameDiv">
                         <h3 className="nameHead">Create a title for your spot</h3>
                         <p className="nameText">Catch guest&apos;s attention with a spot title that highlights what makes your place special.</p>
+                        {errors?.name && (
+                            <p style={{color: 'red'}}>{errors.name}</p>
+                        )}
                         <input
                             className="name"
                             placeholder="Name of your spot"
@@ -186,13 +206,13 @@ function CreateSpotPage() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
-                        {errors?.name && (
-                            <p>{errors.name}</p>
-                        )}
                     </div>
                     <div className="priceDiv">
                         <h3 className="priceHead">Set a base price for your spot</h3>
                         <p className="priceDivText">Competitve pricing can help your listing stand out and rank higher in search results.</p>
+                        {errors?.price && (
+                            <p style={{color: 'red'}}>{errors.price}</p>
+                        )}
                         $ <input
                             className="newprice"
                             placeholder="Price per night (USD)"
@@ -200,9 +220,6 @@ function CreateSpotPage() {
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         />
-                        {errors?.price && (
-                            <p>{errors.price}</p>
-                        )}
                     </div>
                     <div className="uploadDiv">
                         <h3 className="uploadHead">Liven up your spot with photos</h3>

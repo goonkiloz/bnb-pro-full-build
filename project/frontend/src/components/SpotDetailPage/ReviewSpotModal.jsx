@@ -3,7 +3,7 @@ import { useModal } from '../../context/Modal';
 import { FaStar } from 'react-icons/fa'
 import './SpotDetail.css'
 import { createReview } from '../../store/reviews';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function ReviewSpotModal(props) {
@@ -13,6 +13,7 @@ function ReviewSpotModal(props) {
     const { closeModal } = useModal()
     const dispatch = useDispatch()
 
+    const { user } = useSelector((state) => state.session)
     const { spotId } = props;
 
     const handleSubmit = async(e) => {
@@ -23,7 +24,7 @@ function ReviewSpotModal(props) {
             stars: rating
         }
 
-        dispatch(createReview(spotId, data))
+        dispatch(createReview(spotId, data, user))
         closeModal()
     }
 
