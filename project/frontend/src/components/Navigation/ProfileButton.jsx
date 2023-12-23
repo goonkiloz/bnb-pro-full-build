@@ -5,7 +5,7 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { getUserSpots } from '../../store/spots';
 
 function ProfileButton({ user }) {
@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
             <li>
 
             </li>
-            <NavLink className='spotManage' to={'/spots/manage'} onClick={dispatch(getUserSpots())}>Manage Spots</NavLink>
+            <div className='spotManage' onClick={() => navigate('/spots/manage')}>Manage Spots</div>
             <li>
               <button onClick={logout} className='logoutButton'>Log Out</button>
             </li>

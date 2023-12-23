@@ -7,11 +7,11 @@ function DeleteReviewModal(props) {
 
     const { closeModal } = useModal()
 
-    const { reviewId } = props;
+    const { reviewId, spotId } = props;
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        await dispatch(deleteReview(reviewId))
+        await dispatch(deleteReview(reviewId, spotId))
         .then(closeModal())
     }
 

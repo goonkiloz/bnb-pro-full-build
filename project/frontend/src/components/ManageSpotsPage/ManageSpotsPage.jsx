@@ -24,11 +24,11 @@ function ManageSpotsPage() {
 
         const spotOwners = []
 
-        spotList.forEach((spot) => {
+        spotList?.forEach((spot) => {
             spotOwners.push(spot.ownerId)
         })
 
-        if(spotOwners.includes(userId)) {
+        if(spotOwners?.includes(userId)) {
             return true
         }
 
@@ -41,12 +41,11 @@ function ManageSpotsPage() {
             <>
                 <h1 className="manageSpotHead">Manage Spots</h1>
                 <div className="spotGrid">
-                {spotList?.map(({id, previewImage, name, city, state, price, avgRating}) => {
-
-                    if(avgRating === 0) {
+                {spotList?.map(({id, previewImage, name, city, state, price, avgRating, ownerId}) => {
+                    if(avgRating === 0 && ownerId === userState.id) {
                         return (
-                            <div key={id} className={'manageSpotDiv'} title={name}>
-                                    <img src={previewImage} className="spotImg" onClick={() => dispatch(getSpot(id)) && navigate(`/spots/${id}`)} />
+                            <div key={id} className={'manageSpotDiv'} title={name} onClick={() => dispatch(getSpot(id)) && navigate(`/spots/${id}`)}>
+                                    <img src={previewImage} className="spotImg"/>
                                     <div className="spotInfo">
                                         <p className="location">{`${city}, ${state}`}</p>
                                         <h2 className="rating"><span>&#9733;</span> New</h2>
@@ -61,10 +60,10 @@ function ManageSpotsPage() {
                                     </div>
                             </div>
                             )
-                    } else {
+                    } else if(ownerId === userState.id) {
                         return (
-                            <div key={id} className={'manageSpotDiv'} title={name}>
-                                    <img src={previewImage} className="spotImg" onClick={() => dispatch(getSpot(id)) && navigate(`/spots/${id}`)} />
+                            <div key={id} className={'manageSpotDiv'} title={name} onClick={() => dispatch(getSpot(id)) && navigate(`/spots/${id}`)}>
+                                    <img src={previewImage} className="spotImg" />
                                     <div className="spotInfo">
                                         <p className="location">{`${city}, ${state}`}</p>
                                         <h2 className="rating"><span>&#9733;</span> {avgRating}</h2>

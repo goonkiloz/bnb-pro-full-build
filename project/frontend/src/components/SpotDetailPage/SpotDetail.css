@@ -18,12 +18,6 @@
     padding: 5 5% 120 5%;
 }
 
-.reviewDivHead {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-flow: column;
-}
-
 .review {
     padding: 10 0;
 }

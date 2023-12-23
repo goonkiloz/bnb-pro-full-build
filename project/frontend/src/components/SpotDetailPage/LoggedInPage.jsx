@@ -10,6 +10,7 @@ function LoggedInPage () {
     const [reviewText, setReviewText] = useState('')
     const [review, setReviews] = useState(false)
 
+
     const userState = useSelector((state) => state.session)
 
     const { spotId } = useParams()
@@ -19,6 +20,7 @@ function LoggedInPage () {
     const spot = spotState
 
     const reviewState = useSelector((state) =>  state.reviews)
+
 
     const reviews = Object.values(reviewState).filter((review) => {
         if(review.spotId === Number(spotId)) return true
@@ -265,20 +267,6 @@ function LoggedInPage () {
 
                                 const year = dateString[0]
 
-                                if(User?.id === userState?.user?.id) {
-                                    return (
-                                        <div className='review' key={id}>
-                                            <h2 className="reviewUser">{User?.firstName}</h2>
-                                            <p className="reviewDate">{month} {year}</p>
-                                            <p className="reviewText">{review}</p>
-                                            <button>Edit Review</button>
-                                            <OpenModalButton
-                                                buttonText={'Delete'}
-                                                modalComponent={<DeleteReviewModal reviewId={id} spotId={spotId}/>}
-                                            />
-                                        </div>
-                                    )
-                                }
                                 if (spot?.id === spotId) {
                                         return (
                                         <div className='review' key={id}>

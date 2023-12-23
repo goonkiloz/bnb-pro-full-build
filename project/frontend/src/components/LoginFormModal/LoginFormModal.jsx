@@ -28,7 +28,7 @@ function LoginFormModal() {
   };
 
   useEffect(() => {
-    if(credential?.length > 4 && password?.length > 6) {
+    if(credential?.length >= 4 && password?.length >= 6) {
       return setDisable(false)
     } else setDisable(true)
   }, [credential, password, setDisable])

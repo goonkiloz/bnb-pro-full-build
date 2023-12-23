@@ -82,6 +82,8 @@ ul.nav {
  margin: 3 0;
  border-top: 3px solid #f0f0f0;
  border-bottom: 3px solid #f0f0f0;
+ color: blue;
+ cursor: pointer;
 }
 
 .logoutButton{
